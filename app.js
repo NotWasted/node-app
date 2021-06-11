@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const cors = require('cors');
 // const { connectionString } = require('./config/dbConfig')
 require('dotenv/config');
 
@@ -16,6 +17,7 @@ const port = (process.env.PORT || '3000');
 app.set('port', port);
 
 // MIDDLEWARE: functions that get executed when a certain route is hit. We initialize one by the use method 
+app.use(cors());
 app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/user', userRoutes);
