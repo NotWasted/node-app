@@ -27,15 +27,30 @@ checkDuplicateEmail = (req, res, next) => {
   });
 }
 
-checkRegisteredUser = (req, res, next) => {
-}
-
 getUserToken = () => {
 
+}
+
+checkCredentials = (req, res, next) => {
+  User.findOne({
+    email: req.body.email
+  }).exec((req, user) => {
+    // generate a token 
+
+    if (!user) {
+      res.status(400).send('Invalid Email');
+    }
+    if(user.comparePassword(req.body.password)) {
+      // if it doesn't match 
+      res.status(500).send('Invalid Password');
+    }
+    next();
+  });
 }
 
 module.exports = {
   checkDuplicateEmail,
   checkValidEmail,
-  checkRegisteredUser,
+  //checkRegisteredUser,
+  //checkPassword
 }

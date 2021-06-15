@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/UserModel');
 const authM = require('../middleware/authMiddleware');
+const jwt = require('jsonwebtoken')
 
 router.post('/signup', 
   [
@@ -23,19 +24,28 @@ router.post('/signup',
       return next(new Error('Failed to save user :('));
     } catch (err) {
       res.json({ message: err });
-  }
-});
+    }
+  });
 
-router.post('/signin', (req, res) => {
+router.post('/signin', 
   [
-    authM.checkValidEmail,
-    authM.checkRegisteredUser, 
-    
-  ]
+    authM.checkCredentials,
+  ],
+  (req, res) => {
 
-  
-  res.send('POST AUTH SIGNIN');
-});
+    /**
+     * Generate token here 
+     */
+    console.log('POST AUTH SIGNIN');
+    const token = jwt.sign({email: req.body.email}, "SECRET");
+    if (token) {
+      res.status(200).json({message: "Sign-In Successfull!", token: token});
+    } else {
+      res.status(400).send("Authentication failed :(");
+    }
+
+    res.send("Something went wrong");
+  });
 
 module.exports = router;
 
