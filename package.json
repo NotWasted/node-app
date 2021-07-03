@@ -19,7 +19,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.13",
     "morgan": "~1.9.1",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "tesseract.js": "^2.1.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
