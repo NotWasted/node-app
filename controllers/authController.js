@@ -4,7 +4,9 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/dbConfig');
 
 exports.registerUser = async (req, res) => {
+  console.log('Attempting registration...')
   try {
+    console.log(req.body);
     const user = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName, 
@@ -15,8 +17,10 @@ exports.registerUser = async (req, res) => {
     // returns a promise 
     const savedUser = await user.save();        // pre save function in User Model calls the bcrypt function that hashes the password 
     if (savedUser) return res.status(200).json(savedUser);
+    console.log("Could not save user...")
     res.status(400).send({ message: "Registration failed!" });
   } catch (err) {
+    console.log("Could not extract request data...")
     res.status(400).send({ message: "Registration failed!" });
   }
 }

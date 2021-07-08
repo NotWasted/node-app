@@ -1,6 +1,6 @@
 FROM node:14
 
-# Change working directory
+# Change working directory or create a new one 
 WORKDIR "/app"
 
 # Update packages and install dependency packages for services
@@ -10,18 +10,19 @@ RUN apt-get update \
  && echo 'Finished installing dependencies'
 
 # Copy package.json and package-lock.json
-COPY package*.json ./
+COPY package.json package.json 
+COPY package-lock.json package-lock.json
 
 # Install npm production packages 
-RUN npm install --production
+RUN npm install 
 
-COPY . /app
+COPY . .
 
-ENV NODE_ENV production
-ENV PORT 3000
+#ENV NODE_ENV production
+#ENV PORT 3000
 
-EXPOSE 3000
+#EXPOSE 3000
 
-USER node
+#USER node
 
 CMD ["npm", "start"]
