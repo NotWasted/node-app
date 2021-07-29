@@ -33,7 +33,7 @@ exports.signInUser = (req, res) => {
       }
     ).exec((err, user) => {
       if (err) {
-        res.send(400).json({ 
+        res.status(400).json({ 
           message: 'Authentication Failed!' , 
           token: null
         });
@@ -41,7 +41,7 @@ exports.signInUser = (req, res) => {
       }
 
       if (!user) {
-        res.send(400).json({ 
+        res.status(400).json({ 
           message: 'Email not registered!', 
           token: null
         });   
