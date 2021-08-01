@@ -6,10 +6,6 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
-<<<<<<< Updated upstream
-=======
-    "@apollo/client": "^3.3.21",
->>>>>>> Stashed changes
     "@suggestic/sdk": "^1.0.3",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
