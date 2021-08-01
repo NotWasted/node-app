@@ -6,6 +6,10 @@
     "start": "nodemon app.js"
   },
   "dependencies": {
+<<<<<<< Updated upstream
+=======
+    "@apollo/client": "^3.3.21",
+>>>>>>> Stashed changes
     "@suggestic/sdk": "^1.0.3",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
@@ -16,6 +20,7 @@
     "dotenv": "^10.0.0",
     "email-validator": "^2.0.4",
     "express": "~4.16.1",
+    "graphql": "^15.5.1",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.13",

@@ -12,6 +12,9 @@ router.post('/signup',
 );
 
 router.post('/signin', 
+  [
+    authM
+  ],
   authController.signInUser
 );
 
