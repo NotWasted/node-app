@@ -12,16 +12,13 @@ const ItemSchema = mongoose.Schema({
 		required: true,
 		trim: true
 	},
-	itemDescription: {
-		type: String,
+	pantryTips: {
+		type: Array,
 		required: true,
-		trim: true
 	},
-	unitOfMeasurement: {
-		type: String,
-	},
-	quantity: {
-		type: Double
+	pantryDates: {
+		type: Map,
+		required: true,
 	}
 });
 
